@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).ready(function () {      //<anonimus Function
 
 // got snippet from http://api.jquery.com/Types/#Function
 function printQuestion () {
@@ -12,7 +12,7 @@ function printQuestion () {
 
 console.log(question.q1)
 
-     // console.log(question.q1)
+     // console.log(question.q1)                 <mapping css tags
      $('.questionDiv > p').html(question.q1)
      $('.choiceDiv p:eq(0)').html(question.c1)
      $('.choiceDiv p:eq(1)').html(question.c2)
@@ -31,5 +31,4 @@ console.log(question.q1)
    }
 
    printQuestion()
- })
-})
+ });
