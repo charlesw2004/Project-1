@@ -2,6 +2,8 @@ $(document).ready(function () {
 
 
   function playGame () {
+
+    $('#nextButton').hide('slow/400/fast')
     var score = 0
     var questionBank = {
       q1: {
@@ -49,6 +51,10 @@ $(document).ready(function () {
         score -= 1
         $('.scoreDiv > p').html('Your score is ' + score)
       }
+      $('#nextButton').show('slow/400/fast')
+      $('#nextButton').on('click', function () {
+        console.log('Next button Clicked')
+      })
     })
   }
   playGame()
