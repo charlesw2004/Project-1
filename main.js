@@ -1,56 +1,55 @@
 $(document).ready(function () {
 
-  var questionBank = [
-    {
-      t: 'What is the capital of Haiti',
-      c1: 'Never-Never-Land',
-      c2: 'Jaq-mel',
-      c3: 'Cap-Haitian',
-      a: 'Port au Prince'
-    },
-    {
-      t: 'Who wrote the Haitian Decleration of Independance?',
-      c1: 'Wyclef Jean',
-      c2: 'Wilner Charles',
-      c3: 'Superman',
-      a: 'Tousant Louvetour'
-    },
-    {
-      t: 'Who was the first and only king of Haiti',
-      c1: 'choice 1',
-      c2: 'choice 2',
-      c3: 'choice 3',
-      a: '3'
+
+  function playGame () {
+    var score = 0
+    var questionBank = {
+      q1: {
+        t: 'This is the question #1 text',
+        c1: 'choice 1',
+        c2: 'choice 2',
+        c3: 'choice 3',
+        a: '1'
+      },
+      q2: {
+        t: 'This is the question #2 text',
+        c1: 'choice 1',
+        c2: 'choice 2',
+        c3: 'choice 3',
+        a: '2'
+      },
+      q3: {
+        t: 'This is the question #3 text',
+        c1: 'choice 1',
+        c2: 'choice 2',
+        c3: 'choice 3',
+        a: '3'
+      }
     }
-  ]
 
-  var currentQuestion = 0
-  $('#set-input').on('click', checkAnswer)
+    $('#resetButton').on('click', function () {
+      console.log('Reset Button Clicked')
+      $('#input-field').val('')
+      $('.resultDiv > p').html('')
+    })
 
+    $('.questionDiv > p').html(questionBank.q1.t)
+    $('.choiceDiv p:eq(0)').html(questionBank.q1.c1)
+    $('.choiceDiv p:eq(1)').html(questionBank.q1.c2)
+    $('.choiceDiv p:eq(2)').html(questionBank.q1.c3)
 
-  function printQuestion () {
-    $('.question-div > p').html(questionBank[currentQuestion].t)
-    $('.choiceDiv p:eq(0)').html(questionBank[currentQuestion].c1)
-    $('.choiceDiv p:eq(1)').html(questionBank[currentQuestion].c2)
-    $('.choiceDiv p:eq(2)').html(questionBank[currentQuestion].c3)
+    $('#set-input').on('click', function checkAnswer () {
+      var inputSubmitted = $('#input-field').val()
+      if (inputSubmitted === questionBank.q1.a) {
+        $('.resultDiv > p').html('Correct! Good Job')
+        score += 1
+        $('.scoreDiv > p').html('Your score is ' + score)
+      } else {
+        $('.resultDiv > p').html('Sorry! Try again...')
+        score -= 1
+        $('.scoreDiv > p').html('Your score is ' + score)
+      }
+    })
   }
-
-  function checkAnswer () {
-    var inputSubmitted = $('#input-field').val()
-    console.log(questionBank[currentQuestion].a)
-    if (inputSubmitted === questionBank[currentQuestion].a) {
-      $('.resultDiv > p').html('Correct! Good Job')
-      currentQuestion++
-    } else {
-      $('.resultDiv > p').html('Sorry! Try again...')
-    }
-  }
-
- function playGame () {
-   // while (currentQuestion < questionBank.length){
-     printQuestion()
-   // }
- }
-
-playGame()
+  playGame()
 })
